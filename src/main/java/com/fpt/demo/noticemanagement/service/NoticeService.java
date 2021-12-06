@@ -20,6 +20,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fpt.demo.noticemanagement.constant.Constants;
@@ -59,9 +60,13 @@ public class NoticeService extends BaseService<Notice, Long> {
 	private UserRepository userRepository;
 
 	@Autowired
-	public NoticeService(NoticeRepository repository) {
+	public NoticeService(NoticeRepository repository, NoticeMapper mapper, AttachmentService attachmentService,
+			UserRepository userRepository) {
 		super(repository);
 		this.repository = repository;
+		this.attachmentService = attachmentService;
+		this.userRepository = userRepository;
+		this.mapper = mapper;
 	}
 
 	/**
@@ -137,7 +142,7 @@ public class NoticeService extends BaseService<Notice, Long> {
 	public NoticeResponse create(List<MultipartFile> files, NoticeRequest request) throws NoticeManagementException {
 		LOGGER.info("Start to call method create notice");
 		NoticeResponse response = valdateInputRequest(request, files);
-		if(!response.getMessage().equalsIgnoreCase(HttpResponse.SUCCESS.getMessage())) {
+		if (!response.getMessage().equalsIgnoreCase(HttpResponse.SUCCESS.getMessage())) {
 			return response;
 		}
 		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -169,7 +174,7 @@ public class NoticeService extends BaseService<Notice, Long> {
 			throws NoticeManagementException, ResourceNotFoundException {
 		LOGGER.info("Start to call method update notice");
 		NoticeResponse response = valdateInputRequest(request, files);
-		if(!response.getMessage().equalsIgnoreCase(HttpResponse.SUCCESS.getMessage())) {
+		if (!response.getMessage().equalsIgnoreCase(HttpResponse.SUCCESS.getMessage())) {
 			return response;
 		}
 		Notice exitingNotice = repository.findById(request.getId())
@@ -255,9 +260,11 @@ public class NoticeService extends BaseService<Notice, Long> {
 	}
 
 	private void setNoticeIdForAttachments(NoticeResponse noticeResponse) {
-		noticeResponse.getAttachments().forEach(item -> {
-			item.setNoticeId(noticeResponse.getId());
-		});
+		if (!CollectionUtils.isEmpty(noticeResponse.getAttachments())) {
+			noticeResponse.getAttachments().forEach(item -> {
+				item.setNoticeId(noticeResponse.getId());
+			});
+		}
 	}
 
 	private Date convertStringToDate(String dateString) {
