@@ -44,7 +44,7 @@ Use JWT to get user token and use it for the next step
 ## Installation
 - Clone the repository
 ```bash
-$ git clone https://github.com/huynhduy140896/notice-management-service.git
+$ git clone https://github.com/huynhduy140896/notice-management-service-demo.git
 ```
 
 - Install dependencies
@@ -62,7 +62,7 @@ $ cp application-example.properties application.properties
 $ mvn spring-boot:run
 ```
 - Using postman 
-  Please import file below to postman (https://github.com/huynhduy140896/notice-management-service/blob/master/src/main/resources/Postman_collection/Notice-management.postman_collection.json)
+  Please import file below to postman (https://github.com/huynhduy140896/notice-management-service-demo/blob/master/src/main/resources/Postman_collection/Notice-management.postman_collection.json)
 
 How to use:
   I had imported an admin account as a initial data into database (password is encoded):
