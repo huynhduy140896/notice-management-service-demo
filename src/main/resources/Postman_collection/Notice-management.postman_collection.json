@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "69c7e4f7-c3d5-4d3c-b541-7945e4ed87ba",
+		"name": "Notice-management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authen",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"peter\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/notice-management/authen/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notice-management",
+								"authen",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"duy\",\r\n    \"password\": \"123456\",\r\n    \"email\": \"huynhduy@gmail.com\",\r\n    \"role\": [\"USER\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/notice-management/authen/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notice-management",
+								"authen",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "checkExistingRole",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZXRlciIsImlhdCI6MTYzODc4Mjg5NCwiZXhwIjoxNjM4Nzg2NDk0fQ.QF1NlOjyc4g9Ki-CSGVD4Ha-P3THzt_kGuDI6jTLosXw68aeeGHU_c4NBGLM0LmmmWmXUOLtbIvh8vc-YOsgdw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/notice-management/role",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notice-management",
+								"role"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notice",
+			"item": [
+				{
+					"name": "get notice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZXRlciIsImlhdCI6MTYzODc3NDcwNiwiZXhwIjoxNjM4Nzc4MzA2fQ.nvv9OjG1TzmMdNvCZF1ccKu-kjEFp470YJCAgkpb3ziaJJu3Tkp40hEO9NuaMUqox7cxWTqsPXWEu2hYGuJx5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/notice-management/notice/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notice-management",
+								"notice",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZXRlciIsImlhdCI6MTYzODYzODg0MywiZXhwIjoxNjM4NjM5MjAzfQ.IaWFjMMmAB0YPYExuZ6yf3DlpEAbB0PFuGJCIXz2gOKNfNbzIUdNxrNXUS0Bdjx5NxFvttYs_kjiyJzDLr5p8g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/notice-management/notice/get?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notice-management",
+								"notice",
+								"get"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZXRlciIsImlhdCI6MTYzODc4Mjg5NCwiZXhwIjoxNjM4Nzg2NDk0fQ.QF1NlOjyc4g9Ki-CSGVD4Ha-P3THzt_kGuDI6jTLosXw68aeeGHU_c4NBGLM0LmmmWmXUOLtbIvh8vc-YOsgdw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"contentType": "application/octet-stream",
+									"type": "file",
+									"src": "/C:/Users/Admin/Desktop/Own/DxDiag.txt"
+								},
+								{
+									"key": "data",
+									"value": "{\n\"title\":\"Infomation\",\n\"content\":\"Computer configuration\",\n\"startDateTime\":\"2021-12-12\",\n\"endDateTime\":\"2021-12-22\"\n}",
+									"contentType": "application/json",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/notice-management/notice?files",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notice-management",
+								"notice"
+							],
+							"query": [
+								{
+									"key": "files",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZXRlciIsImlhdCI6MTYzODc3MTIxNiwiZXhwIjoxNjM4Nzc0ODE2fQ.sK4UJwqqPwrmigwS6w5J8bOeTsAa-peo8Tv5YOXEZtsOQlWAusWr5X-6tAuY4HTH1htkIANeCSHFXv9Zw2Ye4g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"contentType": "application/octet-stream",
+									"type": "file",
+									"src": "/C:/Users/Admin/Desktop/TimesheetThang10.txt"
+								},
+								{
+									"key": "data",
+									"value": "{\n    \"message\": \"Update notice successfully\",\n    \"id\": 1,\n    \"title\": \"Half Infomation + update\",\n    \"content\": \"Computer configuration but not enough\"\n}",
+									"contentType": "application/json",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/notice-management/notice",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notice-management",
+								"notice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwZXRlciIsImlhdCI6MTYzODcyNjk5MCwiZXhwIjoxNjM4NzMwNTkwfQ.vURArcEfrmUYaus_kRA39u789stQaUhuKs7tkvcngRkuf04kM29IHS0mGq6-_iLDWkfwlWPioUYz6sD9SQHvoA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/notice-management/notice/delete?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notice-management",
+								"notice",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
